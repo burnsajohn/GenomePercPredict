@@ -22,7 +22,7 @@ for f in $directory/*.fa* ##for all subsample fasta files
 do
 echo "working on file $f"
 outname="$(basename -- $f)" ###remove directory info
-outname2=$(echo "$outname" | cut -f 1 -d '.') ###remove file extension (.fasta or .fa, etc.)
+outname2=$(echo $outname | rev | cut -f 2- -d '.' | rev) ###remove file extension (.fasta or .fa, etc.)
 busco -m protein -i $f -o busco$outname2 -l $eukdb
 mv busco$outname2/short_summary* $outdir
 rm -r busco$outname2/
