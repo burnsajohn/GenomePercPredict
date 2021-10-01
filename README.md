@@ -14,4 +14,6 @@ The procedure to observe the relationship went as follows:
 4) Map all of the proteome subsamples to significant hits to hmms using the script runmapping.sh from within the directory with the hmmsearch output files, which calls the perl script mapsigmodels.pl: bash runmapping.sh
 5) Run the "sigModel" output files from the mapping step (step 4) through the predictTrophicMode tool by placing all of the "sigModel" files into the "TestGenomes" directory of the tool and running it in default mode. It will output a data table containing the predictions.
 6) Combine the compiled BUSCO output data (BUSCOtable.csv) and the compiled predictions data table (predictionsDataTable.txt) into one data table giving a BUSCO number and trophic mode predictions for each subset of each proteome using the R script combinePredBuscos.r. This may be best accomplished line by line in R. It has not been tested as a standalone script.
-7) Plot the output in R using scripts in the file plot.preds.vs.buscos.r. The scripts will reproduce the output used in the manuscript on this work if the provided data files 
+7) Plot the output in R using scripts in the file plot.preds.vs.buscos.r. The scripts will reproduce the output used in the manuscript on this work if the provided data files from the "ManuscriptData" directory are used.
+
+These scripts were written in collaboration by Jessica Liu, TreAndice Williams, and John A. Burns. 
