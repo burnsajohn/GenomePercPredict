@@ -2,7 +2,7 @@
 
 ###requires BUSCO to be installed (https://busco.ezlab.org/)
 
-###usage: runBuscoSubs.sh -d [subsample directory] -o [output directory] -e [busco directory]
+###usage: bash runBuscoSubs.sh -d [subsample directory] -o [output directory] -e [busco directory]
 ###removes busco directory after each run, but saves short summary file
 ###can be parallelized; can likely be optimized to only run BUSCO once on whole protein file and search for hits using shuffled subsample fasta headers. Fairly slow and inefficient when run linearly
 ###writes table at end: BUSCOtable.csv that is used for compiling results

@@ -2,8 +2,9 @@
 
 ###requires seqkit to be installed (https://bioinf.shenwei.me/seqkit/)
 
-###usage: subsampleFasta.sh -d [fasta directory] -o [output directory]
-###not particulary efficient, takes a while for lots of files.
+###usage: bash subsampleFasta.sh -d [fasta directory] -o [output directory]
+###not particulary efficient, takes a while for lots of files. 
+###make sure to remove trailing "/" from directory names.
 
 while getopts d:o: flag
 do
@@ -23,7 +24,7 @@ do
 echo "working on subsample percent $i" 
 for q in {1..20} ##do this 20 times--20 subsamples per percentage per fasta file
 do
-outname=$(echo $f | sed 's/$directory//'| sed 's/\///') 
+outname="$(basename -- $f)"
 numseqs=$(grep "^>" $f | wc -l) ##defining variable, counts numseqs
 perc=$i ##defining percent increments
 myint=$(printf "%.0f\n" $(echo | awk -v n=$numseqs -v p=$perc '{print n*p}')) ##compute number of sequences for $perc percent of proteome (rounding, defining variables, multiplication) 
