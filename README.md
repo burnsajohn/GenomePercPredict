@@ -10,6 +10,7 @@ The procedure to observe the relationship went as follows:
 
 1) Starting with a set of whole proteome files, search the set of hmms from the predictTrophicMode tool against all proteins in each file using the script runhmmer.sh as follows: bash runhmmer.sh -d [fasta directory] -o [output directory] -c [control_file] -h [hmm file location] -t [number of threads]
 2) Subsample the proteome files using the script subsampleFasta.sh: bash subsampleFasta.sh -d [fasta directory] -o [output directory]
-3) Run BUSCO on the subsamples using the script runBuscoSubs.sh: bash runBuscoSubs.sh -d [subsample directory] -o [output directory] -e [busco directory]
+3) Run BUSCO on the subsamples using the script runBuscoSubs.sh, it will output a data table of the compiled BUSCO runs from all of the subsamples (BUSCOtable.csv): bash runBuscoSubs.sh -d [subsample directory] -o [output directory] -e [busco directory]
 4) Map all of the proteome subsamples to significant hits to hmms using the script runmapping.sh from within the directory with the hmmsearch output files, which calls the perl script mapsigmodels.pl: bash runmapping.sh
-5) Run the "sigModel" output files from the mapping step (step 4) through the predictTrophicMode tool by placing all of the "sigModel" files into the 
+5) Run the "sigModel" output files from the mapping step (step 4) through the predictTrophicMode tool by placing all of the "sigModel" files into the "TestGenomes" directory of the tool and running it in default mode. It will output a data table containing the predictions.
+6) Combine the compiled BUSCO output data (BUSCOtable.csv) and the compiled predictions data table (
